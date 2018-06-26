@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<iotRouter>
+	<sources>
+		<server type="gateway"
+			uri="ws://10.128.80.128:8080/waterTreatment/websocket/gateway" />
+		<server type="alarmagent"
+			uri="ws://10.128.80.128:8080/waterTreatment/websocket/alarmagent" />
+		<server type="sensordata"
+			uri="ws://10.128.80.128:8080/waterTreatment/websocket/sensordata" />
+	</sources>
+	<!--  10.128.84.28 -->
+	<destinations>
+		<server type="alarmagent"
+			uri="ws://10.128.84.28:8080/waterTreatmentServer/websocket/server/alarmagent" />
+		<server type="sensordata"
+			uri="ws://10.128.84.28:8080/waterTreatmentServer/websocket/server/sensordata" />
+	</destinations>
+	<datasource id="IOT" schema="IOT_WATERTREATMENT_REAL" enable="false">
+		<table name="ALARM" type="alarm" />
+		<table name="SENSOR_DATA_SERIES" type="sensor" />
+		<table name="STATION_STATE" type="station"/>
+		<table name="SLUICE_STATE" type="sluice"/>
+	</datasource>
+</iotRouter>

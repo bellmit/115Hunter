@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<datasources>
+	<datasource id="hana_test">  
+		<property name="driverClassName" value="com.sap.db.jdbc.Driver" />  
+		<property name="url" value="jdbc:sap://10.128.84.28:30515?autocommit=false" />  
+		<property name="username" value="SYSTEM" />  
+		<property name="password" value="manager" /> 
+	</datasource>
+	<datasource id="sybase_test">  
+		<property name="driverClassName" value="com.sybase.jdbc4.jdbc.SybDriver" />  
+		<property name="url" value="jdbc:sybase:Tds:10.58.121.169:2638/xinhua" />  
+		<property name="username" value="dba" />  
+		<property name="password" value="Aa111111" /> 
+	</datasource>
+</datasources>

@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="warn" name="DataCrawler" packages="">
+	<Appenders>
+		<RollingRandomAccessFile name="executorappender"
+			fileName="logs1/executor.log" filePattern="logs/$${date:yyyy-MM}/executor-%d{yyyy-MM-dd}-%i.log.gz">
+			<PatternLayout>
+				<Pattern>%d{yyyy-MM-dd HH:mm:ss} %p [%c] %m%n</Pattern>
+			</PatternLayout>
+			<Policies>
+				<TimeBasedTriggeringPolicy />
+				<SizeBasedTriggeringPolicy size="2 MB" />
+			</Policies>
+			<DefaultRolloverStrategy max="50" />
+		</RollingRandomAccessFile>
+		<RollingRandomAccessFile name="dbappender"
+			fileName="logs/db.log" filePattern="logs/$${date:yyyy-MM}/db-%d{yyyy-MM-dd}-%i.log.gz">
+			<PatternLayout>
+				<Pattern>%d{yyyy-MM-dd HH:mm:ss} %p [%c] %m%n</Pattern>
+			</PatternLayout>
+			<Policies>
+				<TimeBasedTriggeringPolicy />
+				<SizeBasedTriggeringPolicy size="2 MB" />
+			</Policies>
+			<DefaultRolloverStrategy max="50" />
+		</RollingRandomAccessFile>
+		<RollingRandomAccessFile name="finderappender"
+			fileName="logs/taskfinder.log" filePattern="logs/$${date:yyyy-MM}/taskfinder-%d{yyyy-MM-dd}-%i.log.gz">
+			<PatternLayout>
+				<Pattern>%d{yyyy-MM-dd HH:mm:ss} %p [%c] %m%n</Pattern>
+			</PatternLayout>
+			<Policies>
+				<TimeBasedTriggeringPolicy />
+				<SizeBasedTriggeringPolicy size="2 MB" />
+			</Policies>
+			<DefaultRolloverStrategy max="50" />
+		</RollingRandomAccessFile>
+		<RollingRandomAccessFile name="storageappender"
+			fileName="logs/storage.log" filePattern="logs/$${date:yyyy-MM}/storage-%d{yyyy-MM-dd}-%i.log.gz">
+			<PatternLayout>
+				<Pattern>%d{yyyy-MM-dd HH:mm:ss} %p [%c] %m%n</Pattern>
+			</PatternLayout>
+			<Policies>
+				<TimeBasedTriggeringPolicy />
+				<SizeBasedTriggeringPolicy size="2 MB" />
+			</Policies>
+			<DefaultRolloverStrategy max="50" />
+		</RollingRandomAccessFile>
+		<RollingRandomAccessFile name="tokenmanagerappender"
+			fileName="logs1/tokenmanager.log"
+			filePattern="logs/$${date:yyyy-MM}/tokenmanager-%d{yyyy-MM-dd}-%i.log.gz">
+			<PatternLayout>
+				<Pattern>%d{yyyy-MM-dd HH:mm:ss} %p [%c] %m%n</Pattern>
+			</PatternLayout>
+			<Policies>
+				<TimeBasedTriggeringPolicy />
+				<SizeBasedTriggeringPolicy size="2 MB" />
+			</Policies>
+			<DefaultRolloverStrategy max="50" />
+		</RollingRandomAccessFile>
+		<RollingRandomAccessFile name="gearmanappender"
+			fileName="logs1/gearman.log" filePattern="logs/$${date:yyyy-MM}/gearman-%d{yyyy-MM-dd}-%i.log.gz">
+			<PatternLayout>
+				<Pattern>%d{yyyy-MM-dd HH:mm:ss} %p [%c] %m%n</Pattern>
+			</PatternLayout>
+			<Policies>
+				<TimeBasedTriggeringPolicy />
+				<SizeBasedTriggeringPolicy size="2 MB" />
+			</Policies>
+			<DefaultRolloverStrategy max="50" />
+		</RollingRandomAccessFile>
+		<RollingRandomAccessFile name="commonappender"
+			fileName="logs1/common.log" filePattern="logs/$${date:yyyy-MM}/common-%d{yyyy-MM-dd}-%i.log.gz">
+			<PatternLayout>
+				<Pattern>%d{yyyy-MM-dd HH:mm:ss} %p [%c] %m%n</Pattern>
+			</PatternLayout>
+			<Policies>
+				<TimeBasedTriggeringPolicy />
+				<SizeBasedTriggeringPolicy size="5 MB" />
+			</Policies>
+			<DefaultRolloverStrategy max="50" />
+		</RollingRandomAccessFile>
+		<Console name="STDOUT" target="SYSTEM_OUT" follow="true">
+			<PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} %p [%c] %m%n" />
+		</Console>
+	</Appenders>
+	<Loggers>
+		<Root level="debug">
+			<AppenderRef ref="STDOUT" />
+		</Root>
+		<!-- executor configuration -->
+		<logger name="com.sap.cisp.xhna.data.executor" level="debug"
+			additivity="false">
+			<AppenderRef ref="executorappender" />
+			<AppenderRef ref="STDOUT" />
+		</logger>
+		<!-- Main configuration -->
+		<logger name="com.sap.cisp.xhna.data.Main" level="debug"
+			additivity="false">
+			<AppenderRef ref="executorappender" />
+			<AppenderRef ref="STDOUT" />
+		</logger>
+		<!-- Common configuration -->
+		<logger name="com.sap.cisp.xhna.data.common" level="debug"
+			additivity="false">
+			<AppenderRef ref="commonappender" />
+			<AppenderRef ref="STDOUT" />
+		</logger>
+		<logger name="com.sap.cisp.xhna.data.task" level="debug"
+			additivity="false">
+			<AppenderRef ref="executorappender" />
+			<AppenderRef ref="STDOUT" />
+		</logger>
+		<!-- db configuration -->
+		<logger name="com.sap.cisp.xhna.data.db" level="debug"
+			additivity="false">
+			<AppenderRef ref="dbappender" />
+			<AppenderRef ref="STDOUT" />
+		</logger>
+		<!-- token manager configuration -->
+		<logger name="com.sap.cisp.xhna.data.token" level="debug"
+			additivity="false">
+			<AppenderRef ref="tokenmanagerappender" />
+			<AppenderRef ref="STDOUT" />
+		</logger>
+		<!-- finder configuration -->
+		<logger name="com.sap.cisp.xhna.data.finder" level="debug"
+			additivity="false">
+			<AppenderRef ref="finderappender" />
+			<AppenderRef ref="STDOUT" />
+		</logger>
+		<!-- hdfs configuration -->
+		<logger name="com.sap.cisp.xhna.data.storage" level="debug"
+			additivity="false">
+			<AppenderRef ref="storageappender" />
+			<AppenderRef ref="STDOUT" />
+		</logger>
+		<!-- 3rdparty Loggers -->
+		<logger name="twitter4j.HttpClientImpl" level="error">
+		</logger>
+		<logger name="twitter4j.HttpResponseImpl" level="error">
+		</logger>
+		<logger name="net.johnewart.gearman" level="debug" additivity="false">
+			<AppenderRef ref="gearmanappender" />
+			<AppenderRef ref="STDOUT" />
+		</logger>
+		<logger name="io.netty.util" level="debug" additivity="false">
+			<AppenderRef ref="gearmanappender" />
+			<AppenderRef ref="STDOUT" />
+		</logger>
+
+	</Loggers>
+</Configuration>

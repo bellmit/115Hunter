@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<caches>
+	<cache name="traditionalUrlCache">  
+		<property name="size" value="5000" />  
+		<property name="initialSize" value="100" />  
+	</cache>
+	<cache name="twitterQueryCache">  
+		<property name="size" value="2000" />  
+		<property name="initialSize" value="100" />  
+	</cache>
+	<cache name="facebookQueryCache">  
+		<property name="size" value="2000" />  
+		<property name="initialSize" value="100" />  
+	</cache>
+	<cache name="googlePlusQueryCache">  
+		<property name="size" value="500" />  
+		<property name="initialSize" value="20" />  
+	</cache>
+	<cache name="YouTubeQueryCache">  
+		<property name="size" value="500" />  
+		<property name="initialSize" value="20" />  
+	</cache>
+	<cache name="waterTreamentSensorCache">  
+		<property name="size" value="100" />  
+	    <property name="initialSize" value="52" />  
+	</cache>
+</caches>
